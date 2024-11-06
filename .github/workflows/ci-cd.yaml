@@ -22,7 +22,7 @@ jobs:
         run: mvn test
 
       - name: Build Docker Image
-        run: docker build -t zeldor711/githubactions:${{ github.sha }} .
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/githubactions:${{ github.sha }} .
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
@@ -31,4 +31,4 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Push Docker Image
-        run: docker push zeldor711/githubactions:${{ github.sha }}
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/githubactions:${{ github.sha }}
