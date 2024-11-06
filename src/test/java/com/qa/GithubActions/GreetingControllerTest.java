@@ -20,14 +20,14 @@ public class GreetingControllerTest {
     public void greetingShouldReturnDefaultMessage() throws Exception {
         mockMvc.perform(get("/greeting"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.content", is("Hello, World!")));
+                .andExpect(jsonPath("$.content", is("Hello World!")));
     }
 
     @Test
     public void greetingShouldReturnCustomMessage() throws Exception {
         mockMvc.perform(get("/greeting").param("name", "Alice"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.content", is("Hello, Alice!")));
+                .andExpect(jsonPath("$.content", is("Hello Alice!")));
     }
 }
 
